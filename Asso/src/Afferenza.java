@@ -7,14 +7,14 @@ public class Afferenza {
 	private Date dayOne;
 	private Date dayEnd;
 	private int idWorker;
-	private String nameDep;
+	private int idDeparment;
 	
 	
-	public Afferenza(Date x, Date y, int z, String a) {
+	public Afferenza(Date x, Date y, int z, int xy) {
 		dayOne = x;
 		dayEnd = y;
 		idWorker = z;
-		nameDep = a;
+		idDeparment = xy;
 	}
 
 
@@ -48,13 +48,8 @@ public class Afferenza {
 	}
 
 
-	public String getNameDep() {
-		return nameDep;
-	}
-
-
-	public void setNameDep(String nameDep) {
-		this.nameDep = nameDep;
+	public int getIdDeparment() {
+		return idDeparment;
 	}
 	
 	

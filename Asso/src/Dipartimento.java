@@ -3,12 +3,14 @@ public class Dipartimento {
 	private String name;
 	private String teleNumber;
 	private int manager;
+	private int idDeparment;
 	
 	
-	public Dipartimento(String a, String b, int x) {
+	public Dipartimento(String a, String b, int x, int y) {
 		name = a;
 		teleNumber = b;
 		manager = x;
+		idDeparment = y;
 	}
 
 
@@ -37,6 +39,10 @@ public class Dipartimento {
 
 	public int getManager() {
 		return manager;
+	}
+
+	public int getIdDeparment() {
+		return idDeparment;
 	}
 	
 }

@@ -33,7 +33,7 @@ public class aziendona {
 		}catch (ParseException e) {e.printStackTrace();}
 	}
 	
-
+	
 	public void addWorker() {
 		Scanner in = new Scanner(System.in);
 		int x = worker.size();

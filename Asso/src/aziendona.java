@@ -17,7 +17,9 @@ public class aziendona {
 		aff = new ArrayList<Afferenza>();
 		partecipation = new ArrayList<partecipazione>();
 
-
+	}
+	
+	public void setDefault() {
 		worker.add(new Impiegato(0,"Mario", 1000));
 		worker.add(new Impiegato(1,"Valerio", 2000));
 		worker.add(new Impiegato(2,"Edoardo", 3000));
@@ -43,20 +45,28 @@ public class aziendona {
 	}
 	
 	public void addDepartment() {
+		if(!areAvaibleWorkers()) {
+			System.out.println("there are no workers avaible pls hire some onme");
+			return;
+		}
 		Scanner in = new Scanner(System.in);
 		System.out.println("pls enter departen nam");
 		String a = in.next();
 		System.out.println("Inserire numero dipartimento");
 		String b = in.next();
-		getAvaible();
+		getAvaibleOnScreen();
 		System.out.println("Inserire id dipendente");
 		int x = in.nextInt();
 		department.add(new Dipartimento(a, b, x));
 	}
 	
 	public void addReport(){
+		if(!areAvaibleWorkers()) {
+			System.out.println("there are no workers avaible pls hire some onme");
+			return;
+		}
 		Scanner in = new Scanner(System.in);
-		getAvaible();
+		getAvaibleOnScreen();
 		System.out.println("Inserire id dipendente");
 		int x = in.nextInt();
 		for(int i = 0; i < department.size(); i++) 
@@ -77,7 +87,7 @@ public class aziendona {
 		
 	}
 	
-	public void getAvaible() {
+	public void getAvaibleOnScreen() {
 		boolean isAvailable = true;
 		for(int i = 0; i < worker.size(); i++) {
 			for(int j = 0; j < aff.size(); j++) {
@@ -95,6 +105,25 @@ public class aziendona {
 		}
 
 	}
+	
+	public boolean areAvaibleWorkers(){
+		boolean isAvailable = true;
+		for(int i = 0; i < worker.size(); i++) {
+			for(int j = 0; j < aff.size(); j++) {
+				if(worker.get(i).getId() == aff.get(j).getIdWorker())
+				isAvailable = false;
+			}
+			for(int j = 0; j < department.size(); j++){
+				if(worker.get(i).getId() == department.get(j).getManager())
+				isAvailable = false;
+			}
+			if(isAvailable)
+				return true;
+			
+			isAvailable = true;
+		}
+		return false;
+	}
 
 	public void getAllWorkers(){
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -103,7 +132,7 @@ public class aziendona {
 			if(isAEmployee(i))
 				System.out.println(" a manager");
 			else
-				System.out.println(" a worker");
+				System.out.println(" a slave");
 		}
 	}
 
@@ -113,6 +142,26 @@ public class aziendona {
 				return true;
 		}
 		return false;
+	}
+	
+	public void getWorkersAndDays() {
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Enter n day");
+		int nDay = in.nextInt();
+		for(int i = 0; i < aff.size(); i++) {
+			long t = aff.get(i).getDayEnd().getTime() - aff.get(i).getDayOne().getTime();
+			t = (t / (1000 * 60 * 60)) / 24;
+			if(t >= nDay)
+				System.out.print(worker.get(aff.get(i).getIdWorker()).getName() + " has been working for " + t + " days as");
+			if(isAEmployee(i))
+				System.out.println(" a manager");
+			else
+				System.out.println(" a slave");
+				
+		}
+		
 	}
 
 

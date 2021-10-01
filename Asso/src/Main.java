@@ -11,7 +11,8 @@ public class Main {
 			System.out.println("2| Add department");
 			System.out.println("3| Add affilation");
 			System.out.println("4| Get all workes");
-			System.out.println("5| Get workers who works at least n days");
+			System.out.println("5| Get workers who works at least n days");\
+			System.out.println("6| Report MerioEpria");
 			n = in.nextInt();
 			switch(n){
 

@@ -1,4 +1,8 @@
 import java.util.*;
+/**
+ * Programma in java che simula le funzioni di un ipotetico database di una azienda
+ * @author Lorenzo Sanseverino 5DSA
+ */
 public class Main {
 
 	public static void main(String[] args) {

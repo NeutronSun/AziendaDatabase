@@ -2,23 +2,38 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Classe aziendona che gestisce tutte le altre classi(a scopo di memorizzazione dei dati)
+ * @author Lorenzo Sanseverino 5DSA
+ */
 public class aziendona {
-	
+	/**
+	 * ArrayList contenente tutti i lavorati({@link Impiegato})
+	 */
 	ArrayList <Impiegato>worker;
+	/**
+	 * ArrayList contenente tutti i dipartimenti({@link Dipartimento})
+	 */
 	ArrayList <Dipartimento> department;
-	ArrayList project;
+	/**
+	 * ArrayList contentente tutte le afferenze dei lavorati con uno specifico dipartimento({@link Afferenza})
+	 */
 	ArrayList <Afferenza> aff;
-	ArrayList partecipation;
 	
+
+	/**
+	 * Costruttore della classe
+	 */
 	public aziendona() {
 		worker = new ArrayList<Impiegato>();
 		department = new ArrayList<Dipartimento>();
-		project = new ArrayList<Progetto>();
 		aff = new ArrayList<Afferenza>();
-		partecipation = new ArrayList<partecipazione>();
 
 	}
 	
+	/**
+	 * Metodo che crea 3 lavorati e 2 dipartimenti(con le afferenze) di default, per una esecuzione piu' semplice
+ 	 */
 	public void setDefault() {
 		worker.add(new Impiegato(0,"Mario", 1000));
 		worker.add(new Impiegato(1,"Valerio", 2000));
@@ -33,31 +48,28 @@ public class aziendona {
 		}catch (ParseException e) {e.printStackTrace();}
 	}
 	
-	
+	/**
+	 * Metodo che consente l'inserimento di un lavoratore
+	 */
 	public void addWorker() {
-		Scanner in = new Scanner(System.in);
-		int x = worker.size();
-		System.out.println("pls enter name");
-		String a = in.next();
-		System.out.println("pls enter salry");
-		float y = in.nextFloat();
-		worker.add(new Impiegato(x, a, y));
+		worker.add(new Impiegato());
 	}
 	
+	/**
+	 * Metodo che consente l'inserimento di un d
+	 */
 	public void addDepartment() {
 		if(!areNotAssigned()) {
 			System.out.println("there are no workers avaible pls hire some onme");
 			return;
 		}
 		Scanner in = new Scanner(System.in);
-		System.out.println("pls enter departen nam");
-		String a = in.next();
-		System.out.println("Inserire numero dipartimento");
-		String b = in.next();
 		printNotAssigned();
-		System.out.println("Inserire id dipendente");
+		System.out.println("Enter id worker");
 		int x = in.nextInt();
-		department.add(new Dipartimento(a, b, x, (department.size())));
+		department.add(new Dipartimento(x));
+		aff.add(new Afferenza(department.size()-1, x));
+
 	}
 	
 	public void addReport(){
@@ -65,12 +77,14 @@ public class aziendona {
 			System.out.println("there are no workers avaible pls hire some onme");
 			return;
 		}
+
 		Scanner in = new Scanner(System.in);
 		printNotAssigned();
 		System.out.println("Inserire id dipendente");
 		int id = in.nextInt();
+
 		for(int i = 0; i < department.size(); i++) 
-			System.out.println((i) + "|Nome: " + department.get(i).getName());
+			department.get(i).print();
 		System.out.println("Inserire nome dipartimento");
 		int idD = 0;
 		while(true){
@@ -79,18 +93,8 @@ public class aziendona {
 				break;
 			System.out.println("Department doesn't exist");
 		}
-		System.out.println("Inserire data inizio(dd/MM/yyyy)");
-		String start = in.next();
-		try {
-			Date dateS=new SimpleDateFormat("dd/MM/yyyy").parse(start);
-			System.out.println("Inserire nome fine(dd/MM/yyyy)");
-			String end = in.next();
-			Date dateE=new SimpleDateFormat("dd/MM/yyyy").parse(end);
-			aff.add(new Afferenza(dateS, dateE, id, idD));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
+		aff.add(new Afferenza(idD, id));
+
 	}
 	
 	public void printNotAssigned() {
@@ -105,7 +109,7 @@ public class aziendona {
 				isAvailable = false;
 			}
 			if(isAvailable) {
-				System.out.println((i) + "|Id:" + worker.get(i).getId() + "|Name:" + worker.get(i).getName());
+				worker.get(i).print();
 			}
 			isAvailable = true;
 		}
@@ -182,7 +186,7 @@ public class aziendona {
 
 		System.out.println("Choose a department");
 		for(int i = 0; i < department.size(); i++){
-			System.out.println(i + department.get(i).getName());
+			department.get(i).print();
 		}
 		
 		while(true){

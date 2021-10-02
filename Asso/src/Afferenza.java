@@ -1,6 +1,9 @@
 import java.util.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Afferenza {
 	
@@ -17,6 +20,24 @@ public class Afferenza {
 		idDeparment = xy;
 	}
 
+
+	public Afferenza(int idD, int idW){
+		Scanner in = new Scanner(System.in);
+		System.out.println("Inserire data inizio(dd/MM/yyyy)");
+		String start = in.next();
+		try {
+			Date dateS=new SimpleDateFormat("dd/MM/yyyy").parse(start);
+			System.out.println("Inserire nome fine(dd/MM/yyyy)");
+			String end = in.next();
+			Date dateE=new SimpleDateFormat("dd/MM/yyyy").parse(end);
+			this.dayOne = dateS;
+			this.dayEnd = dateE;
+			this.idWorker = idW;
+			this.idDeparment = idD;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public Date getDayOne() {
 		return dayOne;

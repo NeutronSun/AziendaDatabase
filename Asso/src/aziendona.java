@@ -56,7 +56,7 @@ public class aziendona {
 	}
 	
 	/**
-	 * Metodo che consente l'inserimento di un d
+	 * Metodo che consente l'inserimento di un dipartimento con relativa afferenza al dipendente/dirigente
 	 */
 	public void addDepartment() {
 		if(!areNotAssigned()) {
@@ -72,20 +72,25 @@ public class aziendona {
 
 	}
 	
+
+	/**
+	 * metodo che afferisce un dipendente ad una relativa azienda
+	 */
 	public void addReport(){
 		if(!areNotAssigned()) {
 			System.out.println("there are no workers avaible pls hire some onme");
 			return;
 		}
 
+		//input dati lavoratore
 		Scanner in = new Scanner(System.in);
 		printNotAssigned();
-		System.out.println("Inserire id dipendente");
+		System.out.println("Enter name worker");
 		int id = in.nextInt();
-
+		//input dati dipartimento
 		for(int i = 0; i < department.size(); i++) 
 			department.get(i).print();
-		System.out.println("Inserire nome dipartimento");
+		System.out.println("Enter name Department");
 		int idD = 0;
 		while(true){
 			idD = in.nextInt();
@@ -93,10 +98,14 @@ public class aziendona {
 				break;
 			System.out.println("Department doesn't exist");
 		}
+		//costruttore afferenza
 		aff.add(new Afferenza(idD, id));
 
 	}
 	
+	/**
+	 * stampa tutti i lavorati che non sono stati ancora assegnati ad un dipartimento(non afferiti)
+	 */
 	public void printNotAssigned() {
 		boolean isAvailable = true;
 		for(int i = 0; i < worker.size(); i++) {
@@ -116,6 +125,12 @@ public class aziendona {
 
 	}
 	
+	/**
+	 * metodo che scorre {@link aziendona#worker}
+	 * @return
+	 * true se c'e' almeno un lavore disponibile, falso nel caso contrario
+	 * 
+	 */
 	public boolean areNotAssigned(){
 		boolean isAvailable = true;
 		for(int i = 0; i < worker.size(); i++) {
@@ -135,6 +150,9 @@ public class aziendona {
 		return false;
 	}
 
+	/**
+	 * Metodo che stampa tutti i lavorati, per quale dipartimento lavorano e per quale dipartimento
+	 */
 	public void printAllWorkers(){
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		for(int i = 0; i < aff.size(); i++) {
@@ -148,6 +166,13 @@ public class aziendona {
 		}
 	}
 
+	/**
+	 * Metodo che ti dice se un i-esimo lavoratore e' un impiegato o un dirigente
+	 * @param id
+	 * id del lavoratore
+	 * @return
+	 * true se il lavoratore e' un dirigente, false se non lo e'
+	 */
 	public boolean isAEmployee(int id){
 		for(int i = 0; i < department.size(); i++){
 			if(id == department.get(i).getManager())
@@ -156,7 +181,15 @@ public class aziendona {
 		return false;
 	}
 
-
+	/**
+	 * Controlla se l'id inserito e' presente in {@link aziendona#worker} o {@link aziendona#department}
+	 * @param id
+	 * id da controllare
+	 * @param cs
+	 * il caso, ossia in quale arraylist controllare 1:{@link aziendona#worker}| 2:{@link aziendona#department}
+	 * @return
+	 * true se l'id e' presente, false se non lo e'
+	 */
 	public boolean checkId(int id, int cs){
 		switch(cs){
 			
@@ -177,7 +210,9 @@ public class aziendona {
 		return true;
 	}
 	
-	
+	/**
+	 * metodo che stampa tutti i lavoratori che hanno lavorato in una specifica data in uno specifico dipartimento
+	 */
 	public void getWorkersAndDays() {
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		Scanner in = new Scanner(System.in);

@@ -1,0 +1,15 @@
+1) che cos'e' un dbms?!?!?!?!??!?!!???!?!!?!?!?!?!?!?!?
+2) che cos'e' un datashwe!??!
+3) differenza tra database e ER FAILE
+4) differenza tra gestirte un archivio con file e con databser!?!?!?!?!?!?!?!?!'1
+5) le funzioni di un dbms
+
+dbms lavorazione di file condivisi tra applicazione NO FAKE DUPLICATIPN
+er dibi garantisce la persistenza su una memroia di massa oide meccanismi
+
+
+6) fasi di progettazione di un database: anlisi del probleeems, analisi requisiti, progettazione concettuale(descrive i dati), 
+								progettazione logica(come vengono gestiti: tabele) 
+								e modello fisico(come vengono fisicamente gestiti)
+
+rollback torna indietro in caso di sgozzamento di dati quindi ripristina un backups

@@ -54,10 +54,13 @@ public class Dipartimento {
 	 */
 	public Dipartimento(int idW){
 		Scanner in = new Scanner(System.in);
-		System.out.println("pls enter departen nam");
+		System.out.println("Enter name department");
 		String a = in.next();
-		System.out.println("Inserire numero dipartimento");
-		String b = in.next();
+		String b = "";
+		do{
+			System.out.println("Enter telenumber department(10 digits)");
+			b = in.next();
+		}while(b.length() != 10);
 		this.name = a;
 		this.teleNumber = b;
 		this.manager = idW;

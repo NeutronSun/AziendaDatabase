@@ -1,8 +1,6 @@
 import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Scanner;
 /**
  * Classe Afferenza che gestisce il rapporto lavoratore/dipartimento, memorizzando che lavoratore x ha lavorato in data a-b 

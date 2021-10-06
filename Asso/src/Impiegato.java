@@ -46,9 +46,9 @@ public class Impiegato {
 	public Impiegato(){
 		Scanner in = new Scanner(System.in);
 		this.id = (cont-1);
-		System.out.println("pls enter name");
+		System.out.println("Enter name");
 		this.name = in.next();
-		System.out.println("pls enter salry");
+		System.out.println("Enter salry");
 		this.salary = in.nextFloat();
 	}
 

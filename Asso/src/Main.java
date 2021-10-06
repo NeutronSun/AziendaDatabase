@@ -14,7 +14,7 @@ public class Main {
 			System.out.println("1| Add worker");
 			System.out.println("2| Add department");
 			System.out.println("3| Add affilation");
-			System.out.println("4| Get all workes");
+			System.out.println("4| Get all workes and all departments");
 			System.out.println("5| Get workers who works in a specific day");
 			n = in.nextInt();
 			switch(n){
@@ -28,7 +28,7 @@ public class Main {
 				break;
 
 				case 3:
-				dataBase.addReport();
+				dataBase.addAffiliation();
 				break;
 
 				case 4:
@@ -40,7 +40,7 @@ public class Main {
 				break;
 
 				default:
-					System.out.println("error 404");
+					System.out.println("Command Not Found");
 
 			}
 		}

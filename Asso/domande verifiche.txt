@@ -1,6 +1,6 @@
 1) che cos'e' un dbms?!?!?!?!??!?!!???!?!!?!?!?!?!?!?!?
 2) che cos'e' un datashwe!??!
-3) differenza tra database e ER FAILE
+3) differenza tra database e ER FAILE		
 4) differenza tra gestirte un archivio con file e con databser!?!?!?!?!?!?!?!?!'1
 5) le funzioni di un dbms
 
@@ -13,3 +13,4 @@ er dibi garantisce la persistenza su una memroia di massa oide meccanismi
 								e modello fisico(come vengono fisicamente gestiti)
 
 rollback torna indietro in caso di sgozzamento di dati quindi ripristina un backups
+
